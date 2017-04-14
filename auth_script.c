@@ -14,7 +14,10 @@
 
 // Required to use strdup
 #define __EXTENSIONS__
-
+#define SA_NOCLDSTOP    0x00000001
+#define SA_RESTART      0x10000000
+#include <sys/types.h>
+#include <sys/time.h>
 #include <errno.h>
 #include <openvpn-plugin.h>
 #include <signal.h>
@@ -22,6 +25,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <wait.h>
 
 // For consistency in log messages
 #define PLUGIN_NAME "auth-script"
